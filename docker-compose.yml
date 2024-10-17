@@ -1,0 +1,32 @@
+version: "3.8"
+
+networks:
+  merlin-z1a8k:
+    name: merlin-z1a8k
+
+services:
+  backend:
+    container_name: django-app
+    networks:
+      - merlin-z1a8k
+    build:
+      context: ./be
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./be:/app
+    command: python manage.py runserver 0.0.0.0:8000
+
+  frontend:
+    container_name: nextjs-app
+    networks:
+      - merlin-z1a8k
+    build:
+      context: ./fe
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes: 
+      - ./fe:/app
+    command: npm run dev
