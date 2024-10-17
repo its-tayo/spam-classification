@@ -21,3 +21,5 @@ Once Docker is up, you can start the project with:
 ```bash
 make up
 ```
+
+Once the services are running, you can access the application by navigating to: [http://localhost:3000/](http://localhost:3000/)

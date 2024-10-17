@@ -29,4 +29,5 @@ services:
       - backend
     volumes: 
       - ./fe:/app
+      - /app/node_modules
     command: npm run dev
